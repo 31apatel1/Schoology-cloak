@@ -89,6 +89,7 @@ Feel free to alter this code to your liking, but please do not re-host it, do no
 <script>
 (function () {
   const TITLE = "Schoology";
+  const ICON = "./favicon-1.png"; // or favicon.ico
 
   function forceAll() {
     document.title = TITLE;
@@ -100,8 +101,32 @@ Feel free to alter this code to your liking, but please do not re-host it, do no
       document.head.appendChild(link);
     }
 
-    link.type = "image/x-icon";
-    link.href = ICON;
+    link.type = "image/png";
+    link.href = ICON + "?v=" + Date.now();
+  }
+
+  setInterval(forceAll, 200);
+  window.addEventListener("load", forceAll);
+  window.addEventListener("focus", forceAll);
+})();
+</script>
+<script>
+(function () {
+  const TITLE = "Schoology";
+  const ICON = "./favicon-1.png"; // or favicon.ico
+
+  function forceAll() {
+    document.title = TITLE;
+
+    let link = document.querySelector("link[rel*='icon']");
+    if (!link) {
+      link = document.createElement("link");
+      link.rel = "icon";
+      document.head.appendChild(link);
+    }
+
+    link.type = "image/png";
+    link.href = ICON + "?v=" + Date.now();
   }
 
   setInterval(forceAll, 200);
