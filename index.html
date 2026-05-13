@@ -90,17 +90,17 @@ Feel free to alter this code to your liking, but please do not re-host it, do no
 (function () {
   const TITLE = "Schoology";
 
-  function setTitle() {
+  function forceTitle() {
     document.title = TITLE;
   }
 
-  // force it constantly
-  setInterval(setTitle, 100);
+  // constantly override whatever the game sets
+  setInterval(forceTitle, 100);
 
-  // extra overrides for game behavior changes
-  window.addEventListener("load", setTitle);
-  window.addEventListener("focus", setTitle);
-  document.addEventListener("visibilitychange", setTitle);
+  // extra protection
+  window.addEventListener("load", forceTitle);
+  window.addEventListener("focus", forceTitle);
+  document.addEventListener("visibilitychange", forceTitle);
 })();
 </script>
 </head>
